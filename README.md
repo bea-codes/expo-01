@@ -1,0 +1,1 @@
+# App de Notas criado com React Native e Expo
