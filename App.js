@@ -12,23 +12,28 @@ function reducer(state, action){
       data: [...state.data, { note: action.note, id: action.id } ].reverse()
     })
   }
+  if(action.type == 'deleteNote'){
+    const x = action.id;
+    return { ...state, data: state.data.filter((item, x) => item.id != x) }
+  }
 }
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, { data:[] });
   const [input, setInput] = useState('');
+  const [index, setIndex] = useState(0);
   let notesLenght = state.data.length;
 
   const handleDispatchAdd = () => {
-    const index = notesLenght + 1;
     if (input){
       dispatch({type: 'addedNote', note: `${input}`, id: index});
     }
     setInput('');
+    setIndex(index+1);
 	}
 
   const handleDispatchDelete = () => {
-    dispatch({type: 'deleteNote'})
+    dispatch({type: 'deleteNote', id: index})
   }
 
   return (
