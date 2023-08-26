@@ -1,9 +1,21 @@
+
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Pressable } from 'react-native';
+import { useReducer } from 'react';
 import InputField from './components/InputField';
 import NotesArea from './components/NotesArea';
 
+function reducer(state, action){
+  if(action.type == 'addedNote'){
+    return({
+      data: [...state.data, { id: state.id, note: state.note} ]
+    })
+  }
+}
+
 export default function App() {
+  const [state, dispatch] = useReducer(reducer, { data:[] });
+
   return (
     <View style={styles.container}>
       <View style={styles.titleAndInput}>
