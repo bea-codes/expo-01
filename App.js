@@ -9,18 +9,21 @@ import CustomButton from './components/CustomButton';
 function reducer(state, action){
   if(action.type == 'addedNote'){
     return({
-      data: [...state.data, { note: action.note } ].reverse()
+      data: [...state.data, { note: action.note, id: action.id } ].reverse()
     })
   }
 }
 
 export default function App() {
-  const [state, dispatch] = useReducer(reducer, { data:[], id: 0 });
+  const [state, dispatch] = useReducer(reducer, { data:[] });
   const [input, setInput] = useState('');
   let notesLenght = state.data.length;
 
   const handleDispatchAdd = () => {
-		dispatch({type: 'addedNote', note: `${input}`});
+    const index = notesLenght + 1;
+    if (input){
+      dispatch({type: 'addedNote', note: `${input}`, id: index});
+    }
     setInput('');
 	}
 
