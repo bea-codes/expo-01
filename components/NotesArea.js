@@ -4,16 +4,15 @@ import Note from "./Note"
 
 
 
-export default function NotesArea({ note, state }) {
+export default function NotesArea({ state, handleDispatchDelete }) {
 	
 	return(
 		<View style={styles.container}>
 			<FlatList 
-			renderItem={({item})=> <Note note={item.note}/>}
-			data={state}
+			renderItem={({item})=> <Note note={item.note} handleDelete={handleDispatchDelete}/>}
+			data={state.data}
 			keyExtractor={item => item.id}
 			/>
-			{/* <Note note={'teste'}></Note> */}
 		</View>
 	)
 }

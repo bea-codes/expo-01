@@ -2,8 +2,11 @@ import { View, TextInput, Pressable, StyleSheet, Text } from "react-native"
 import CustomButton from "./CustomButton"
 import { useState } from "react"
 
-export default function InputField({dispatch}){
-	const [input, setInput] = useState('');
+export default function InputField({ dispatch }){
+	const handleDispatch = () => {
+		dispatch({type: 'addedNote', note: `${input}`})
+	}
+
 	return(
 	<View style={styles.inputContainer}>
 		<TextInput
@@ -12,8 +15,9 @@ export default function InputField({dispatch}){
 			value={input}
 			onChangeText={setInput}
 			blurOnSubmit={true}
+			onSubmitEditing={handleDispatch}
 		/>
-		<CustomButton texto={'Adicionar'}/>
+		<CustomButton texto={'Adicionar'} dispatch={dispatch} input={input}/>
 	</View>
 	) 
 }

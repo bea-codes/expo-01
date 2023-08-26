@@ -1,12 +1,12 @@
 import { View, Pressable, StyleSheet, Text } from "react-native";
 import CustomButton from "./CustomButton";
 
-export default function Note({ note, id }) {
+export default function Note({ note, id, handleDelete }) {
 	return(
 		<View style={styles.container}>
 			<Text>{note}</Text>
 			<View style={styles.buttonContainer}>
-				<CustomButton texto={'Excluir'}/>
+				<CustomButton texto={'Excluir'} handleDispatch={handleDelete}/>
 			</View>
 			
 		</View>
