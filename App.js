@@ -7,14 +7,11 @@ import NotesArea from './components/NotesArea';
 import CustomButton from './components/CustomButton';
 
 function reducer(state, action){
-  if(action.type == 'addedNote'){
+  switch(action.type){
+  case 'addedNote':
     return({
       data: [...state.data, { note: action.note, id: action.id } ].reverse()
     })
-  }
-  if(action.type == 'deleteNote'){
-    const x = action.id;
-    return { ...state, data: state.data.filter((item, x) => item.id != x) }
   }
 }
 
@@ -22,19 +19,16 @@ export default function App() {
   const [state, dispatch] = useReducer(reducer, { data:[] });
   const [input, setInput] = useState('');
   const [index, setIndex] = useState(0);
-  let notesLenght = state.data.length;
 
   const handleDispatchAdd = () => {
-    if (input){
-      dispatch({type: 'addedNote', note: `${input}`, id: index});
+    if (input != ''){
+      dispatch({type: 'addedNote', note: `${input.trim()}`, id: index});
     }
     setInput('');
     setIndex(index+1);
+    // console.log(`${index} index`);
 	}
 
-  const handleDispatchDelete = () => {
-    dispatch({type: 'deleteNote', id: index})
-  }
 
   return (
     <View style={styles.container}>
@@ -52,14 +46,16 @@ export default function App() {
           <CustomButton texto={'Adicionar'} handleDispatch={handleDispatchAdd}/>
 	      </View>
 
-        <NotesArea state={state} handleDispatchDelete={handleDispatchDelete}/>
+        <NotesArea state={state}/>
         <StatusBar style="auto" />
-        <View style={styles.notesLenght}>
-          <Text>{notesLenght} tarefas</Text></View>
         </View>
     </View>
   );
 }
+
+{/* <View style={styles.notesLenght}>
+          <Text>{state.data.length} tarefas</Text>
+        </View> */}
 
 const styles = StyleSheet.create({
   container: {

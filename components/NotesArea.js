@@ -1,7 +1,7 @@
 import { Text,View, FlatList, StyleSheet } from "react-native"
 import CustomButton from "./CustomButton"
 
-export default function NotesArea({ state, handleDispatchDelete }) {
+export default function NotesArea({ state }) {
 	
 	return(
 		<View style={styles.container}>
@@ -10,15 +10,13 @@ export default function NotesArea({ state, handleDispatchDelete }) {
 				({item})=> 
 			<View style={styles.containerNote}>
 				<Text>{item.note}</Text>
-				<View style={styles.buttonContainer}>
-					<CustomButton texto={'Excluir'} handleDispatch={handleDispatchDelete}/>
-				</View>
+				{/* <View style={styles.buttonContainer}>
+					<CustomButton texto={'Excluir'}/>
+				</View> */}
 			</View>
 			}
-
 			data={state.data}
-			keyExtractor={item => item.id}
-			/>
+			keyExtractor={item => item.id}/>
 		</View>
 	)
 }

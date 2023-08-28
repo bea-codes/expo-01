@@ -1,8 +1,8 @@
 import { Pressable, Text, StyleSheet } from "react-native";
 
-export default function CustomButton({ texto , handleDispatch }) {
+export default function CustomButton({ texto }) {
 	return(
-		<Pressable style={styles.botao} onPress={handleDispatch}>
+		<Pressable style={styles.botao}>
 			<Text>{texto}</Text>
 		</Pressable>
 	)
