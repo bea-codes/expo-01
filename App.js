@@ -33,7 +33,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.titleAndInput}>
-        <Text style={styles.awesomeTitle}>☆✨awesome notes✨☆</Text>
+        <Text style={styles.awesomeTitle}>☆✨awesome tasks✨☆</Text>
 
         <View style={styles.inputContainer}>
           <TextInput
@@ -49,13 +49,14 @@ export default function App() {
         <NotesArea state={state}/>
         <StatusBar style="auto" />
         </View>
+        <View style={styles.notesLenght}>
+          <Text>{state.data.length} tarefas</Text>
+        </View>
     </View>
   );
 }
 
-{/* <View style={styles.notesLenght}>
-          <Text>{state.data.length} tarefas</Text>
-        </View> */}
+
 
 const styles = StyleSheet.create({
   container: {
