@@ -27,7 +27,7 @@
       "favicon": "./assets/favicon.png"
     },
     "updates": {
-      "updates.useClassicUpdates" : true
+      "useClassicUpdates" : true
     }
   }
 }
