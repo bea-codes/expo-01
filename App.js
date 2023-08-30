@@ -37,12 +37,8 @@ export default function App() {
     }
     setInput("");
     setIndex(index + 1);
-    // console.log(`${index} index`);
   };
 
-  // const handleDispatchDelete = () => {
-  //   dispatch({ type: 'deletedNote', });
-  // };
 
   return (
     <View style={styles.container}>
